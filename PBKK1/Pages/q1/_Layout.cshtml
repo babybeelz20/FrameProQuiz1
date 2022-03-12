@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/css/w3.css" />
+</head>
+<body>
+	@{
+		var profileNav = "";
+		var profileLink = "";
+
+		var companyNav = "";
+		var companyLink = "";
+
+		var serviceNav = "";
+		var serviceLink = "";
+
+		var collabNav = "";
+		var collabLink = "";
+
+		if (ViewData["Title"]?.ToString() == "Profile")
+		{
+			profileNav = "navbar-item-active";
+			profileLink = "navbar-link-active";
+		}
+		if (ViewData["Title"]?.ToString() == "Company")
+		{
+			companyNav = "navbar-item-active";
+			companyLink = "navbar-link-active";
+		}
+		if (ViewData["Title"]?.ToString() == "Services")
+		{
+			serviceNav = "navbar-item-active";
+			serviceLink = "navbar-link-active";
+		}
+		if (ViewData["Title"]?.ToString() == "Collaboration")
+		{
+			collabNav = "navbar-item-active";
+			collabLink = "navbar-link-active";
+		}
+	}
+
+	<header>
+		<nav class="w3-top">
+			<div class="w3-bar w3-white w3-wide w3-padding w3-card">
+				<a asp-area="" asp-page="Index" class="w3-bar-item w3-button"><b>OX</b> Arts</a>
+
+
+					<div class="w3-right w3-hide-small">
+							<div class="w3-bar-item @profileNav">
+								<a class="w3-button @profileLink" asp-area="" asp-page="profile">Profile</a>
+							</div>
+							<div class="w3-bar-item @companyNav">
+								<a class="w3-button @companyLink" asp-area="" asp-page="company">Company</a>
+							</div>
+							<div class="w3-bar-item @serviceNav">
+								<a class="w3-button @serviceLink" asp-area="" asp-page="services">Services</a>
+							</div>
+							<div class="w3-bar-item @collabNav">
+								<a class="w3-button @collabLink" asp-area="" asp-page="collaboration">Collaboration</a>
+							</div>
+					</div>
+				</div>
+		</nav>
+	</header>
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+
+	<footer class="w3-center w3-black w3-padding-16">
+		<p>2022 - OX Arts</p>
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
